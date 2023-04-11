@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "John",
+  lastName: "Doe",
+  country: "Doe",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const skillColor = "navy";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <style define:vars={{skillColor}}>
+      h1 {
+        color: purple;
+      }
+      .skill {
+        color: green;
+        color: var(--skillColor);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <Navigation />
+
+    <h1>About me</h1>
+
+    <p>
+      My name is {identity.firstName} {identity.lastName}. I live in {identity.country} and I am a {identity.occupation}.
+    </p>
+
+    <p>My skills are:</p>
+
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+  </body>
+</html>
