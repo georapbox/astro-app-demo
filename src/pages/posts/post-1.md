@@ -5,7 +5,7 @@ pubDate: 2022-07-01
 description: 'This is the first post of my new Astro blog.'
 author: 'Astro Learner'
 image:
-  url: '../../assets/logo.png'
+  url: '/assets/img/logo.png'
   alt: 'The Astro logo with the word One.'
   width: 80
   height: 80

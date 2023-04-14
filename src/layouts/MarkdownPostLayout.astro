@@ -9,6 +9,6 @@ const { frontmatter } = Astro.props;
   <p>Written by {frontmatter.author}</p>
   <p>Published on {new Date(frontmatter.pubDate).toLocaleDateString()}</p>
   <p>Tags: {frontmatter.tags ? frontmatter.tags.join(', ') : '-'}</p>
-  <p>------------------------------------------</p>
+  <hr>
   <slot />
 </BaseLayout>

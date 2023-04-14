@@ -4,7 +4,7 @@ title: My Second Blog Post
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 image: 
-  url: '../../assets/logo.png'
+  url: '/assets/img/logo.png'
   alt: "Thumbnails of websites from the Astro Showcase site."
   width: 80
   height: 80
