@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
 
 const pageTitle = "About Me";
 
@@ -36,7 +36,7 @@ const skillColor = "navy";
     </style>
   </head>
   <body>
-    <Navigation />
+    <Header />
 
     <h1>About me</h1>
 
@@ -50,4 +50,8 @@ const skillColor = "navy";
       {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
   </body>
+
+  <script>
+    import '../scripts/menu.ts';
+  </script>
 </html>

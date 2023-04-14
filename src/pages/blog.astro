@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
 
 const posts = [
   { name: 'Post 1', path: '/posts/post-1/' },
@@ -18,7 +18,7 @@ const posts = [
     <title>Blog</title>
   </head>
   <body>
-    <Navigation />
+    <Header />
 
     <h1>Blog</h1>
 
@@ -26,4 +26,8 @@ const posts = [
      {posts.map(p => <li><a class="post" href={p.path}>{p.name}</a></li>)}
     </ul>
   </body>
+
+  <script>
+    import '../scripts/menu.ts';
+  </script>
 </html>

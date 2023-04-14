@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
 
 const pageTitle = 'Home';
 ---
@@ -14,7 +14,7 @@ const pageTitle = 'Home';
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Navigation />
+    <Header />
 
     <h1>Home</h1>
 
@@ -22,4 +22,8 @@ const pageTitle = 'Home';
       This is a dummy website for testing <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>.
     </p>
   </body>
+
+  <script>
+    import '../scripts/menu.ts';
+  </script>
 </html>
