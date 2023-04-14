@@ -1,29 +1,9 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = 'Home';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <Header />
-
-    <h1>Home</h1>
-
-    <p>
-      This is a dummy website for testing <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>.
-    </p>
-  </body>
-
-  <script>
-    import '../scripts/menu.ts';
-  </script>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is some content for the home page.</p>
+</BaseLayout>
