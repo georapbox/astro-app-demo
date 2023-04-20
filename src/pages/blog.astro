@@ -2,16 +2,32 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = 'Blog';
-const posts = await Astro.glob('./posts/*.md');
+const allPosts = await Astro.glob('./posts/*.md');
+const allTags = allPosts.map(post => post.frontmatter.tags).filter(Boolean).flat();
+const uniqueTags = [...new Set(allTags)];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+  <h2>Posts</h2>
   <ul>
     {
-      posts.map(p => {
+      allPosts.map(post => {
         return (
           <li>
-            <a class="post" href={p.url}>{p.frontmatter.title}</a>
+            <a class="post" href={post.url}>{post.frontmatter.title}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <h2>Tags</h2>
+  <ul>
+    {
+      uniqueTags.map(tag => {
+        return (
+          <li>
+            <a class="tag" href={`/tags/${tag}`}>{tag}</a>
           </li>
         );
       })
