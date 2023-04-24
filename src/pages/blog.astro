@@ -3,8 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = 'Blog';
 const allPosts = await Astro.glob('./posts/*.md');
-const allTags = allPosts.map(post => post.frontmatter.tags).filter(Boolean).flat();
-const uniqueTags = [...new Set(allTags)];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -15,19 +13,6 @@ const uniqueTags = [...new Set(allTags)];
         return (
           <li>
             <a class="post" href={post.url}>{post.frontmatter.title}</a>
-          </li>
-        );
-      })
-    }
-  </ul>
-
-  <h2>Tags</h2>
-  <ul>
-    {
-      uniqueTags.map(tag => {
-        return (
-          <li>
-            <a class="tag" href={`/tags/${tag}`}>{tag}</a>
           </li>
         );
       })
