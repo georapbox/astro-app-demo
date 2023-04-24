@@ -1,7 +1,99 @@
-<div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Tags</a>
-  <a href="/rss.xml">RSS</a>
-</div>
+---
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<style>
+  .nav-links {
+    width: 100%;
+    top: 5rem;
+    left: 48px;
+    background-color: #ff9776;
+    display: none;
+    margin: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.5rem 0;
+    margin-bottom: 0.25rem;
+    border-radius: 0.375rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #121212;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  }
+
+  .nav-links a.active,
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    background-color: var(--accent-color);
+    color: white;
+  }
+
+  .nav-links--expanded {
+    display: unset;
+  }
+
+  .hamburger {
+    background-color: transparent;
+    border: 0;
+    padding: 0.5rem;
+    margin-bottom: 0.85rem;
+    cursor: pointer;
+  }
+
+  .hamburger .line {
+    display: block;
+    width: 1.875rem;
+    height: 0.25rem;
+    margin-bottom: 5px;
+    background-color: var(--accent-color);
+  }
+
+  .hamburger .line:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 576px) {
+  .nav-links {
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+</style>
+
+<button type="button" class="hamburger">
+  <span class="line"></span>
+  <span class="line"></span>
+  <span class="line"></span>
+</button>
+
+<nav>
+  <div class="nav-links">
+    <a href="/" class={pathname === '/' ? 'active' : ''}>Home</a>
+    <a href="/about/" class={pathname.includes('about') ? 'active' : ''}>About</a>
+    <a href="/blog/" class={pathname.includes('blog') || pathname.includes('posts') ? 'active' : ''}>Blog</a>
+    <a href="/tags/" class={pathname.includes('tags') ? 'active' : ''}>Tags</a>
+    <a href="/rss.xml">RSS</a>
+  </div>
+</nav>
+
+<script>
+  document.querySelector('.hamburger')?.addEventListener('click', () => {
+    document.querySelector('.nav-links')?.classList.toggle('nav-links--expanded');
+  });
+</script>
